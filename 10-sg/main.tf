@@ -3,8 +3,7 @@ module "sg" {
     source = "git::https://github.com/srikanthchalla1215/terraform-aws-sg.git?ref=main"
     project = var.project
     environment = var.environment
-    sg_name = var.sg_names[count.index]
+    sg_name = replace(var.sg_names[count.index], "_", "-")
     vpc_id = local.vpc_id
 
-  
 }
